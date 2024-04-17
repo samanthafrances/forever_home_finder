@@ -41,7 +41,7 @@ Visit the following URL to access Forever Home Finder online: [Forever Home Find
 ## Future Updates
 - Allow users to leave reviews and ratings for animals they've adopted or fostered. 
 - Add a feature for users to save their favorite animals.
-- Enhance search functionality 
+- Enhance search functionality with advanced filters
 
 ## Credits
 - Team Member 1: [Emiliya Ileeva](link_to_social)
