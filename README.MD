@@ -44,7 +44,10 @@ Visit the following URL to access Forever Home Finder online: [Forever Home Find
 - Enhance search functionality with advanced filters
 
 ## Credits
-- Team Member 1: [Emiliya Ileeva](link_to_social)
-- Team Member 2: [Samantha Yates](link_to_social)
-- Team Member 3: [Corey Cameron](link_to_social)
+- Team Member 1: [Emiliya Ileeva](https://github.com/emmyileeva)
+- Team Member 2: [Samantha Yates](https://github.com/samanthafrances)
+- Team Member 3: [Corey Cameron](https://github.com/nottmonk)
+
+## Links 
+[Github](https://github.com/samanthafrances/forever_home_finder) | [Wireframe](https://www.figma.com/file/VBPGrumxATuXkkbuyIh5pX/Forever-Home-Finder?type=design&node-id=60-1365&mode=design&t=f0WUfbwHOkIaq8sB-0) | [Trello](https://trello.com/b/2uhRkjhN/forever-home-finder)
 
