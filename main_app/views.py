@@ -15,3 +15,12 @@ def blog_view(request):
 
 def donate_view(request):
     return render(request, 'donate.html')
+
+def messaging(request):
+  return render(request, 'messaging.html')
+
+def resources(request):
+  return render(request, 'resources.html')
+
+def adoption(request):
+  return render(request, 'adoption.html')
