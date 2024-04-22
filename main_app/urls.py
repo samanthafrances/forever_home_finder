@@ -10,6 +10,10 @@ urlpatterns = [
     path('messaging/', views.messaging, name='messaging'),
     path('resources/', views.resources, name='resources'),
     path('adoption/', views.adoption, name='adoption'),
+    
+    
+    
+    
     path('blog/<int:blog_id>/assoc_sub/<int:user_id>/', views.assoc_sub, name='assoc_sub'),
 
 ]

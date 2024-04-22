@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import User, Blog, Subscriber
+
 
 # Create your views here.
 def home(request):
