@@ -1,6 +1,6 @@
 
 from django.shortcuts import render, redirect
-from .models import User, Blog, Animal
+from .models import User, Blog, Animal, Subscriber
 from .forms import AdoptionInquiryForm
 
 
