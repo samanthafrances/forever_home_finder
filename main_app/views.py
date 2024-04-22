@@ -1,6 +1,11 @@
+
 from django.shortcuts import render, redirect
-from .models import User, Blog, Animal
+from .models import User, Blog, Animal, Subscriber
 from .forms import AdoptionInquiryForm
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from .forms import CustomUserCreationForm
+
 
 # Create your views here.
 def home(request):
@@ -51,10 +56,24 @@ def adopt_animal(request, animal_id):
         form = AdoptionInquiryForm()
     return render(request, 'adoption.html', {'form': form, 'animal': animal})
 
-def assoc_sub(request, user_id):
-   user = User.objects.get(id=user_id)
-   user.subscriber.add(request.user)
+def assoc_sub(request, blog_id, user_id):
+   Blog.objects.get(id=blog_id).subscribers.add(user_id)
+   return redirect('blog')
 
+def register(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('/')
+        else:
+            error_message = 'Invalid sign up - try again'
+    else:
+        form = CustomUserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/register.html', context)
 
 
 
