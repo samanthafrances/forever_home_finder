@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import User
+from .models import User, Blog
 
 # Create your views here.
 def home(request):
@@ -12,7 +12,8 @@ def volunteer_view(request):
     return render(request, 'volunteer.html')
 
 def blog_view(request):
-    return render(request, 'blog.html')
+    blog = Blog.objects.all()
+    return render(request, 'blog.html', {'blog' : blog})
 
 
 def donate_view(request):
@@ -32,7 +33,7 @@ def adoption(request):
 
 def assoc_sub(request, user_id):
    user = User.objects.get(id=user_id)
-   user.subscriber.add(user)
+   user.subscriber.add(request.user)
 
 
 
