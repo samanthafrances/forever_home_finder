@@ -61,3 +61,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'Profile of {self.user.username}'
+    
+class AdoptionInquiry(models.Model):
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Inquiry for {self.animal.name} by {self.name}"
