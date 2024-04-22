@@ -4,7 +4,7 @@
 <h1>Blog</h1>
 {% for blog in blog.all %}
 {{blog.content}}
-
+<form action="{% url 'assoc_sub' blog.id user.id %}" method="POST"></form>
 {% csrf_token %}
 <button type="submit">Subscribe</button>
 <p>Welcome to the blog page.</p>

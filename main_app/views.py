@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import User, Blog
+from .models import User, Blog, Subscriber
 
 # Create your views here.
 def home(request):
@@ -31,9 +31,9 @@ def adoption(request):
 
 
 
-def assoc_sub(request, user_id):
-   user = User.objects.get(id=user_id)
-   user.subscriber.add(request.user)
+def assoc_sub(request, blog_id, user_id):
+   Blog.objects.get(id=blog_id).subscribers.add(user_id)
+   return redirect('blog')
 
 
 
