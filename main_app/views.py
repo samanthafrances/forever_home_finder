@@ -5,6 +5,7 @@ from .forms import AdoptionInquiryForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -97,6 +98,10 @@ class UpdateMessage :
 
 class DeleteMessage :
    model = Message
+   
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
 
 
 
