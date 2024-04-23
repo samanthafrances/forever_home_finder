@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <h1>Home</h1>
+<div class="container mt-4">
+    <div class="position-relative">
+        <img src="{% static 'images/home.webp' %}" class="img-fluid" alt="Home Background"
+            style="width: 100%; height: auto;">
+        <div class="position-absolute top-50 start-50 translate-middle text-center text-white">
+            <h2>Welcome to Forever Home Finder</h2>
+            <p>Your trusted companion in pet adoption. Every pet deserves a loving home.</p>
+            <a href="{% url 'adoption' %}" class="btn btn-primary btn-lg">View Our Pets</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

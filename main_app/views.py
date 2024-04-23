@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import User, Blog, Animal, Subscriber
 from .forms import AdoptionInquiryForm
 from django.contrib.auth import login
@@ -74,6 +74,10 @@ def register(request):
         form = CustomUserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/register.html', context)
+
+def adoption_details(request, animal_id):
+    animal = get_object_or_404(Animal, pk=animal_id)
+    return render(request, 'adoptiondetails.html', {'animal': animal})
 
 
 
