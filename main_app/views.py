@@ -4,7 +4,6 @@ from .models import User, Blog, Animal, Subscriber
 from .forms import AdoptionInquiryForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .forms import CustomUserCreationForm
 
 
 # Create your views here.
@@ -79,8 +78,9 @@ def adoption_details(request, animal_id):
     animal = get_object_or_404(Animal, pk=animal_id)
     return render(request, 'adoptiondetails.html', {'animal': animal})
 
-
-
+def blog_details(request, blog_id):
+    blog = get_object_or_404(Blog, pk=blog_id)
+    return render(request, 'blog-detail.html', {'post': blog})
 
 
 
