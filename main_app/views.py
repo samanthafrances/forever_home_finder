@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import User, Blog, Animal, Subscriber, Message
-from .forms import AdoptionInquiryForm
+from .forms import AdoptionInquiryForm, CustomUserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
