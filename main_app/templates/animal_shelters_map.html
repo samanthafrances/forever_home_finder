@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<head>
+    <title>Animal Shelters Near You</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTnQrE3O3KZ9cP34MkATpWELwyfe46tqE&libraries=places&callback=initMap" async defer></script>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Animal Shelters Near You</h3>
+    <div id="map"></div>
+    <script>
+      const initMap = () => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const userLocation = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            const map = new google.maps.Map(
+              document.getElementById("map"),
+              {
+                zoom: 15,
+                center: userLocation,
+              }
+            );
+            const service = new google.maps.places.PlacesService(map);
+            service.nearbySearch(
+              {
+                location: userLocation,
+                radius: 5000,
+                keyword: "animal shelter",
+              },
+              (results, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                  for (let i = 0; i < results.length; i++) {
+                    createMarker(results[i]);
+                  }
+                }
+              }
+            );
+            const createMarker = (place) => {
+              const marker = new google.maps.Marker({
+                map,
+                position: place.geometry.location,
+              });
+            }
+          },
+          () => {
+            console.error("Error getting user location");
+          }
+        );
+      }
+    </script>
+  </body>
+
+{% endblock %}
