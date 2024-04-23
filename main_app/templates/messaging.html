@@ -1,3 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Connect with others today!</h1>
+<form action="{% %}" method="POST"></form>
+<button>Add Message</button>
+{% for message in messages %}
+{{ message.content }}
+
+{% endfor %}                  
+{% endblock %}
 
 
 
