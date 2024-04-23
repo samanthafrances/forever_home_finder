@@ -108,7 +108,7 @@ def profile(request):
 
 class CreateMessage(CreateView) :
   template_name = 'message_form.html'
-  success_url = '/messaging/{message_id}'
+  success_url = '/messaging'
   model = Message
   fields = ['content']
 
