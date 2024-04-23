@@ -14,7 +14,8 @@ urlpatterns = [
     path('adopt/<int:animal_id>/', views.adopt_animal, name='adopt_animal'),
     path('blog/<int:blog_id>/assoc_sub/<int:user_id>/', views.assoc_sub, name='assoc_sub'),
     path('accounts/register/', views.register, name='register'),
-    path('adoption/<int:animal_id>/', views.adoption_details, name='adoption_details')
+    path('adoption/<int:animal_id>/', views.adoption_details, name='adoption_details'),
+     path('blog/<int:blog_id>/', views.blog_details, name='blog_details')
 ]
 
 

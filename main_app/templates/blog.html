@@ -1,12 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Blog</h1>
-{% for blog in blog.all %}
-{{blog.content}}
-<form action="{% url 'assoc_sub' blog.id user.id %}" method="POST"></form>
-{% csrf_token %}
-<button type="submit">Subscribe</button>
-<p>Welcome to the blog page.</p>
-{% endfor %}
+<div class="container mt-4">
+    <h2 class="mb-4">Blog</h2>
+    <div class="row mb-4">
+        <div class="col">
+            <button class="btn btn-primary" id="subscribeBtn">Subscribe</button>
+        </div>
+    </div>
+    <div id="subscribeMessage" class="alert alert-success" style="display: none;">
+        Thank you for subscribing!
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for post in blog %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ post.image_url }}" class="card-img-top" alt="{{ post.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">By {{ post.author.username }}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'blog_details' post.id %}" class="btn btn-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+    document.getElementById('subscribeBtn').addEventListener('click', function () {
+        document.getElementById('subscribeMessage').style.display = 'block';
+    });
+</script>
 {% endblock %}
