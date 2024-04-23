@@ -91,10 +91,10 @@ def blog_details(request, blog_id):
 def petitions(request):
     petitions = [
         {
-            'url': 'https://www.change.org/p/stop-the-overturn-of-roe-v-wade',
-            'image': 'https://www.change.org/images/icons/petition-thumb-mobile-3x.png',
-            'title': 'Stop the Overturn of Roe v. Wade',
-            'description': 'The Supreme Court is considering overturning Roe v. Wade, which legalized abortion in the United States. We must stop this from happening.',
+            'url': 'https://www.change.org/p/demand-felony-charges-against-cody-roberts-for-animal-cruelty?',
+            'image': 'https://assets.change.org/photos/4/lx/fr/HpLXFRqHHuLoLxE-800x450-noPad.jpg?1712441239',
+            'title': 'Demand Felony Charges Against Cody Roberts for Animal Cruelty',
+            'description': 'Please join us in standing up against such heinous acts of violence towards our wildlife by signing this petition today!',
         },
         # ... dummy text above, adding more petitions here ...
     ]
