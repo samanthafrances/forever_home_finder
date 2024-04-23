@@ -54,7 +54,7 @@ class Message(models.Model):
         return self.content
     
     def get_absolute_url(self):
-     return reverse('messaging', kwargs={'message_id': self.id})
+     return reverse('messaging')
     
 
 class Profile(models.Model):

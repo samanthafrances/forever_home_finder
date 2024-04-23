@@ -6,7 +6,8 @@
 <a href="{% url 'messageform' %}"><button>Add Message</button></a>
 {% for message in messages %}
 {{message.content}}
-
+<a href="{% url 'message_update' message.id %}">Edit</a>
+<a href="{% url 'message_delete' message.id %}">Delete</a>
 {% endfor %}                  
 {% endblock %}
 
