@@ -3,10 +3,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import User, Blog, Animal, Subscriber, Message, Profile
 from .forms import AdoptionInquiryForm, CustomUserCreationForm, ProfilePictureForm
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth import update_session_auth_hash
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -115,18 +115,34 @@ def upload_profile_picture(request):
         form = ProfilePictureForm(instance=request.user.profile)
     return render(request, 'upload_profile_picture.html', {'form': form})
 
+def change_username(request):
+    if request.method == 'POST':
+        form = UserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = UserChangeForm(instance=request.user)
+    return render(request, 'change_username.html', {'form': form})
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('profile')
+    else:
+        form = PasswordChangeForm(user=request.user)
+    return render(request, 'change_password.html', {'form': form})
+
 # Messaging functionality
 class CreateMessage(CreateView) :
   template_name = 'message_form.html'
   success_url = '/messaging'
   model = Message
   fields = ['content']
-
-
-
   
-
-
 class UpdateMessage(UpdateView) :
   model = Message
   fields = ['content']
