@@ -21,7 +21,9 @@ urlpatterns = [
     path('blog/<int:blog_id>/', views.blog_details, name='blog_details'),
     path('profile/', profile, name='profile'),
     path('blog/<int:blog_id>/', views.blog_details, name='blog_details'),
-    path('messageform/', views.CreateMessage.as_view(), name='messageform' )
+    path('messageform/', views.CreateMessage.as_view(), name='messageform' ),
+    path('messaging/<int:pk>/update', views.UpdateMessage.as_view(), name='message_update'),
+    path('messaging/<int:pk>/delete',views.DeleteMessage.as_view(), name='message_delete')
 ]
 
 
