@@ -5,7 +5,7 @@ from .forms import AdoptionInquiryForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
-from django.views.generic.edit import CreateView
+
 
 # Create your views here.
 def home(request):
@@ -80,18 +80,7 @@ def adoption_details(request, animal_id):
     return render(request, 'adoptiondetails.html', {'animal': animal})
 
 
-# Messaging functionality
 
-class CreateMessage(CreateView) :
-  model = Message
-  fields = ['content']
-
-class UpdateMessage :
-  model = Message
-  fields = ['content']
-
-class DeleteMessage :
-   model = Message
 
 
 
