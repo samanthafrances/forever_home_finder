@@ -47,13 +47,15 @@ class Comment(models.Model):
         return self.content
     
 class Message(models.Model):
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sender')
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='receiver')
     content = models.TextField()
-    date = models.DateTimeField(auto_now_add=True)
+    
 
     def __str__(self):
-        return f'Message from {self.sender.username} to {self.receiver.username}'
+        return self.content
+    
+    def get_absolute_url(self):
+     return reverse('messaging', kwargs={'message_id': self.id})
+    
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
