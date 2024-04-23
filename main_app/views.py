@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 
 
+
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -97,6 +98,8 @@ class UpdateMessage :
 
 class DeleteMessage :
    model = Message
+   
+
 
 
 

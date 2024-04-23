@@ -1,0 +1,3 @@
+<h1>{{ request.user.username }}</h1>
+<p>Bio: {{ request.user.profile.bio }}</p>
+<img src="{{ request.user.profile.avatar.url }}" alt="Avatar">
