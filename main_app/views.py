@@ -90,9 +90,14 @@ def blog_details(request, blog_id):
 
 
 
+
+
+
 # Messaging functionality
 
 class CreateMessage(CreateView) :
+  template_name = 'message_form.html'
+  success_url = '/messaging/'
   model = Message
   fields = ['content']
 

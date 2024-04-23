@@ -2,8 +2,8 @@
 
 {% block content %}
 <h1>Connect with others today!</h1>
-<form action="{% %}" method="POST"></form>
-<button>Add Message</button>
+
+<a href="{% url 'messageform' %}"><button>Add Message</button></a>
 {% for message in messages %}
 {{ message.content }}
 
