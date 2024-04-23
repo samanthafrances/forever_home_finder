@@ -26,6 +26,9 @@ def blog_view(request):
 def donate_view(request):
     return render(request, 'donate.html')
 
+def petitions_view(request):
+ return render(request, 'sign-petitions.html')
+
 def messaging(request):
   return render(request, 'messaging.html')
 
