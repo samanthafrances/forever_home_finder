@@ -7,8 +7,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView
 from django.contrib.auth.decorators import login_required
 
-
-
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -88,10 +86,9 @@ def blog_details(request, blog_id):
     blog = get_object_or_404(Blog, pk=blog_id)
     return render(request, 'blog-detail.html', {'post': blog})
 
-
-
-
-
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
 
 # Messaging functionality
 
@@ -108,9 +105,7 @@ class UpdateMessage :
 class DeleteMessage :
    model = Message
    
-@login_required
-def profile(request):
-    return render(request, 'profile.html')
+
 
 
 
