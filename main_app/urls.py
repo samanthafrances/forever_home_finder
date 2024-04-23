@@ -20,10 +20,16 @@ urlpatterns = [
     path('adoption/<int:animal_id>/', views.adoption_details, name='adoption_details'),
     path('blog/<int:blog_id>/', views.blog_details, name='blog_details'),
     path('profile/', profile, name='profile'),
+<<<<<<< Updated upstream
     path('blog/<int:blog_id>/', views.blog_details, name='blog_details'),
     path('messageform/', views.CreateMessage.as_view(), name='messageform' ),
     path('messaging/<int:pk>/update', views.UpdateMessage.as_view(), name='message_update'),
     path('messaging/<int:pk>/delete',views.DeleteMessage.as_view(), name='message_delete')
+=======
+     path('blog/<int:blog_id>/', views.blog_details, name='blog_details'),
+     path('messageform/', views.CreateMessage.as_view(), name='messageform'),
+     path('upload-profile-picture/', views.upload_profile_picture, name='upload_profile_picture'),
+>>>>>>> Stashed changes
 ]
 
 
