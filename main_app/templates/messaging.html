@@ -5,7 +5,7 @@
 
 <a href="{% url 'messageform' %}"><button>Add Message</button></a>
 {% for message in messages %}
-{{ message.content }}
+{{message.content}}
 
 {% endfor %}                  
 {% endblock %}

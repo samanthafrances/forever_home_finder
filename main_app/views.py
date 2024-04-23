@@ -28,7 +28,9 @@ def petitions_view(request):
  return render(request, 'sign-petitions.html')
 
 def messaging(request):
-  return render(request, 'messaging.html')
+   messages = Message.objects.all()
+   context = {'messages': messages}
+   return render(request, 'messaging.html', context)
 
 def resources(request):
   return render(request, 'resources.html')
@@ -106,9 +108,14 @@ def profile(request):
 
 class CreateMessage(CreateView) :
   template_name = 'message_form.html'
-  success_url = '/messaging/'
+  success_url = '/messaging/{message_id}'
   model = Message
   fields = ['content']
+
+
+
+  
+
 
 class UpdateMessage :
   model = Message
