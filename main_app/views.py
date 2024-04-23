@@ -1,11 +1,11 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User, Blog, Animal, Subscriber
+from .models import User, Blog, Animal, Subscriber, Message
 from .forms import AdoptionInquiryForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
-
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 def home(request):
@@ -78,6 +78,21 @@ def register(request):
 def adoption_details(request, animal_id):
     animal = get_object_or_404(Animal, pk=animal_id)
     return render(request, 'adoptiondetails.html', {'animal': animal})
+
+
+# Messaging functionality
+
+class CreateMessage(CreateView) :
+  model = Message
+  fields = ['content']
+
+class UpdateMessage :
+  model = Message
+  fields = ['content']
+
+class DeleteMessage :
+   model = Message
+
 
 
 
