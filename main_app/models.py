@@ -60,7 +60,7 @@ class Message(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField()
-    avatar = models.ImageField(upload_to='avatars/', default='avatars/default.jpg')
+    avatar = models.ImageField(upload_to='images/', blank=True, null=True)
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

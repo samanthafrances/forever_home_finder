@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User, Blog, Animal, Subscriber, Message
-from .forms import AdoptionInquiryForm, CustomUserCreationForm
+from .models import User, Blog, Animal, Subscriber, Message, Profile
+from .forms import AdoptionInquiryForm, CustomUserCreationForm, ProfilePictureForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -104,8 +104,18 @@ def petitions(request):
 def profile(request):
     return render(request, 'profile.html')
 
-# Messaging functionality
+@login_required
+def upload_profile_picture(request):
+    if request.method == 'POST':
+        form = ProfilePictureForm(request.POST, request.FILES, instance=request.user.profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ProfilePictureForm(instance=request.user.profile)
+    return render(request, 'upload_profile_picture.html', {'form': form})
 
+# Messaging functionality
 class CreateMessage(CreateView) :
   template_name = 'message_form.html'
   success_url = '/messaging'
