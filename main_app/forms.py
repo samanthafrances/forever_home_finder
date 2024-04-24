@@ -1,5 +1,5 @@
 from django import forms
-from .models import AdoptionInquiry, Profile, Comment
+from .models import AdoptionInquiry, Profile, Comment, Message
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -26,4 +26,12 @@ class CommentForm(forms.ModelForm):
         fields = ['content']
         widgets = {
             'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 3})
+        }
+        
+class ReplyForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 3}),
         }

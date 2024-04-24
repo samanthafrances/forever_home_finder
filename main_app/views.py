@@ -1,12 +1,14 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import User, Blog, Animal, Subscriber, Message, Profile, Comment
-from .forms import AdoptionInquiryForm, CustomUserCreationForm, ProfilePictureForm, CommentForm
+from .forms import AdoptionInquiryForm, CustomUserCreationForm, ProfilePictureForm, CommentForm, ReplyForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+from django.urls import reverse_lazy
+
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -191,6 +193,20 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
     return render(request, 'change_password.html', {'form': form})
 
+def reply_message(request, message_id):
+    message = Message.objects.get(pk=message_id)
+    if request.method == 'POST':
+        form = ReplyForm(request.POST)
+        if form.is_valid():
+            reply = form.save(commit=False)
+            reply.user = request.user
+            reply.parent_message = message  
+            reply.save()
+            return redirect('messaging')
+    else:
+        form = ReplyForm()
+    return render(request, 'reply_message.html', {'form': form, 'message': message})
+
 # Messaging functionality
 class CreateMessage(CreateView) :
   template_name = 'message_form.html'
@@ -201,10 +217,13 @@ class CreateMessage(CreateView) :
 class UpdateMessage(UpdateView) :
   model = Message
   fields = ['content']
+  template_name = 'edit_message.html'
+  success_url = reverse_lazy('messaging')
 
 class DeleteMessage(DeleteView) :
    model = Message
-   success_url = '/messaging' 
+   success_url = reverse_lazy('messaging')
+   template_name = 'delete_message.html'
    
 
 

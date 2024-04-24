@@ -26,6 +26,7 @@ urlpatterns = [
     path('upload-profile-picture/', views.upload_profile_picture, name='upload_profile_picture'),
     path('change-username/', views.change_username, name='change_username'),
     path('change-password/', views.change_password, name='change_password'),
+    path('messaging/<int:message_id>/reply/', views.reply_message, name='reply_message'),
 ]
 
 
