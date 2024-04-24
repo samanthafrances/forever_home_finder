@@ -24,9 +24,6 @@ def blog_view(request):
 def donate_view(request):
     return render(request, 'donate.html')
 
-def petitions_view(request):
- return render(request, 'petitions.html')
-
 def messaging(request):
    messages = Message.objects.all()
    context = {'messages': messages}
@@ -99,59 +96,91 @@ def blog_details(request, blog_id):
         form = CommentForm()
     return render(request, 'blog-detail.html', {'post': blog, 'comments': comments, 'form': form})
 
-def petitions(request):
+def petitions_view(request):
     petitions = [
         {
             'url': 'https://www.change.org/p/demand-felony-charges-against-cody-roberts-for-animal-cruelty?',
             'image': 'https://assets.change.org/photos/4/lx/fr/HpLXFRqHHuLoLxE-800x450-noPad.jpg?1712441239',
             'title': 'Demand Felony Charges Against Cody Roberts for Animal Cruelty',
             'description': 'Please join us in standing up against such heinous acts of violence towards our wildlife by signing this petition today!',
+        },
 
+        {
             'url': 'https://www.change.org/p/let-ukraine-s-refugee-animals-live?',
             'image': 'https://assets.change.org/photos/2/oa/rh/rboArhVoZOmrTnx-800x450-noPad.jpg?1688372973',
             'title': 'Let Ukraine’s refugee animals live!',
             'description': 'Pets don’t start wars, they are helpless against human cruelty, shocked by bombs and missiles, and are entirely dependent on us for their survival.',
+        },
 
-            'url': 'https://www.change.org/p/make-texas-safe-for-animals?',
-            'image': 'https://assets.change.org/photos/8/sb/ea/YYsbEaRynLrjbym-800x450-noPad.jpg?1640306464',
-            'title': 'Make Texas Safe For Animals',
-            'description': 'Awareness is the first step towards change so please sign our petition in hope  to bring an everlasting change for animals in the state of Texas.',
+         {
+            'url': 'https://www.change.org/p/louise-bartlett-tougher-laws-for-animal-abusers?',
+            'image': 'https://assets.change.org/photos/5/zz/on/YLZZoNkitPOXhqG-800x450-noPad.jpg?1550528429',
+            'title': 'Enforce Tougher Laws for Animal Abusers',
+            'description': 'Now more than ever people are becoming increasingly aware of the inherent cruelty of the animal entertainment industry.',
+        },
 
+        {
             'url': 'https://www.change.org/p/government-ban-wild-animals-trading-locally-and-internationally?',
             'image': 'https://assets.change.org/photos/2/wb/us/RPWbUswzJMlNXqc-800x450-noPad.jpg?1580272081',
             'title': 'BAN wild animals trading locally and internationally',
             'description': 'Let’s work together to stop and permanently ban the trading of wild animals. If we don’t stop this now, it will happen again.',
+        },
 
+        {
             'url': 'https://www.change.org/p/craigslist-end-the-selling-of-animals-on-craigslist?',
             'image': 'https://assets.change.org/photos/5/mn/jr/almnJRXMPpHUzCc-800x450-noPad.jpg?1614913812',
             'title': 'End the Selling of Animals on Craigslist',
             'description': 'Craigslist can end the exploitation of these animals by banning the transfer of all animals on its website.',
+        },
 
+        {
             'url': 'https://www.change.org/p/seaworld-stop-exploiting-animals-for-human-entertainment?',
             'image': 'https://assets.change.org/photos/1/qv/zd/JaQVzDXGvKSopZl-800x450-noPad.jpg?1658380547',
             'title': 'SeaWorld: STOP exploiting animals for human entertainment.',
             'description': 'Please sign and share this petition calling on Sea World to free the dolphins so we can create meaningful change.',
+        },
 
+        {
             'url': 'https://www.change.org/p/l-or%C3%A9al-ban-l-or%C3%A9al-from-testing-on-animals?',
             'image': 'https://assets.change.org/photos/7/iq/oa/lmiQoAZtRuJeTxf-800x450-noPad.jpg?1581491971',
             'title': 'Ban L’Oréal from Testing on Animals',
             'description': 'Animal testing is a barbaric deed that is carried out by companies worldwide.',
+        },
 
+        {
             'url': 'https://www.change.org/p/ebay-classifieds-stop-selling-live-animals?',
             'image': 'https://assets.change.org/photos/4/le/js/HRLEjsYUHYHuXzL-800x450-noPad.jpg?1515770546',
             'title': 'Ebay Classifieds: Stop Selling Live Animals',
             'description': 'They are providing a vast marketplace for puppy mills to sell dogs and by doing this they are contributing to animal cruelty.',
+        },
 
+        {
             'url': 'https://www.change.org/p/brock-urge-fema-to-save-millions-of-farm-animals?',
             'image': 'https://assets.change.org/photos/2/jy/sd/xRJYSDGdNSMrfkK-800x450-noPad.jpg?1537552198',
             'title': 'Urge FEMA to save millions of farm animals',
             'description': 'Sign today to tell FEMA to protect farm animals in the PETS Act.',
+        },
 
+        {
             'url': 'https://www.change.org/p/universoul-circus-stop-using-animals-as-props-in-your-show?',
             'image': 'https://assets.change.org/photos/5/kf/vz/xskfVzzItYlQVqu-800x450-noPad.jpg?1523033601',
             'title': 'UniverSoul Circus: Stop Using Animals As Props In Your Show!',
             'description': 'Now more than ever people are becoming increasingly aware of the inherent cruelty of the animal entertainment industry.',
         },
+
+        {
+            'url': 'https://www.change.org/p/yotube-tiktok-and-instagram-stop-animal-abuse-for-entertainment?',
+            'image': 'https://assets.change.org/photos/2/jd/pu/mqjDpUsYIFABxrq-800x450-noPad.jpg?1585065775',
+            'title': 'Stop YouTube Animal Abuse',
+            'description': 'YouTuber, instagrammer and tiktok user Ssoyoung collects aquatic life just to torture on camera for views.',
+        },
+        {
+            'url': 'https://www.change.org/p/make-texas-safe-for-animals?',
+            'image': 'https://assets.change.org/photos/8/sb/ea/YYsbEaRynLrjbym-800x450-noPad.jpg?1640306464',
+            'title': 'Make Texas Safe For Animals',
+            'description': 'Awareness is the first step towards change so please sign our petition in hope  to bring an everlasting change for animals in the state of Texas.',
+        },
+   
     ]
     return render(request, 'petitions.html', {'petitions': petitions})
 
