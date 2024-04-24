@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import User, Blog, Animal, Subscriber, Message, Profile
-from .forms import AdoptionInquiryForm, CustomUserCreationForm, ProfilePictureForm
+from .models import User, Blog, Animal, Subscriber, Message, Profile, Comment
+from .forms import AdoptionInquiryForm, CustomUserCreationForm, ProfilePictureForm, CommentForm
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -86,7 +86,18 @@ def adoption_details(request, animal_id):
 
 def blog_details(request, blog_id):
     blog = get_object_or_404(Blog, pk=blog_id)
-    return render(request, 'blog-detail.html', {'post': blog})
+    comments = blog.comments.all()
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.blog = blog
+            comment.user = request.user
+            comment.save()
+            return redirect('blog_details', blog_id=blog_id)
+    else:
+        form = CommentForm()
+    return render(request, 'blog-detail.html', {'post': blog, 'comments': comments, 'form': form})
 
 def petitions(request):
     petitions = [

@@ -29,10 +29,7 @@
             {% endfor %}
             <form method="post">
                 {% csrf_token %}
-                <div class="mb-3">
-                    <label for="commentContent" class="form-label">Add a comment:</label>
-                    <textarea class="form-control" id="commentContent" name="content" rows="3" required></textarea>
-                </div>
+                {{ form.as_p }}
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
