@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4">Blog</h2>
     <div class="row mb-4">
         <div class="col">
-            <button class="btn btn-primary" id="subscribeBtn">Subscribe</button>
+            <h2 class="mb-0">Blog</h2>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" id="subscribeBtn">Subscribe To Our Blog!</button>
         </div>
     </div>
     <div id="subscribeMessage" class="alert alert-success" style="display: none;">
@@ -15,10 +18,12 @@
         {% for post in blog %}
         <div class="col">
             <div class="card h-100">
-                <img src="{{ post.image_url }}" class="card-img-top" alt="{{ post.title }}">
+                {% with 'images/'|add:post.title|add:'.webp' as image_filename %}
+                <img src="{% static image_filename %}" alt="{{ post.title }}" class="card-img-top"
+                    style="height: 200px; object-fit: cover;">
+                {% endwith %}
                 <div class="card-body">
                     <h5 class="card-title">{{ post.title }}</h5>
-                    <p class="card-text">By {{ post.author.username }}</p>
                 </div>
                 <div class="card-footer">
                     <a href="{% url 'blog_details' post.id %}" class="btn btn-primary">Read More</a>
@@ -35,3 +40,4 @@
     });
 </script>
 {% endblock %}
+
