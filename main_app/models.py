@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils import timezone
 
 
 class Animal(models.Model):
@@ -46,8 +47,9 @@ class Comment(models.Model):
          return f'Comment on {self.blog.title}'
     
 class Message(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     content = models.TextField()
-    
+    timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.content

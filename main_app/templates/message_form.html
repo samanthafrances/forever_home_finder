@@ -1,12 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>Add Message</h1>
-  <form action="" method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit">
-    </form>
-    {% endblock %}
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="card-title mb-4">Add Message</h1>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="messageContent" class="form-label">Message:</label>
+              <textarea class="form-control" id="messageContent" name="content" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{% url 'messaging' %}" class="btn btn-secondary">Back</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

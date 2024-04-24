@@ -1,15 +1,72 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1>Connect with others today!</h1>
+<div class="container mt-4">
+    <h1 class="mb-4">Community Discussions</h1>
 
-<a href="{% url 'messageform' %}"><button>Add Message</button></a>
-{% for message in messages %}
-{{message.content}}
-<a href="{% url 'message_update' message.id %}">Edit</a>
-<a href="{% url 'message_delete' message.id %}">Delete</a>
-{% endfor %}                  
+    <div class="row mb-4">
+        <div class="col">
+            <a href="{% url 'messageform' %}" class="btn btn-primary">Compose Message</a>
+        </div>
+    </div>
+    {% for message in messages %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <p class="card-text">{{ message.content }}</p>
+        </div>
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <div class="user-info d-flex align-items-center">
+                <img src="{% if message.user.profile.avatar %}{{ message.user.profile.avatar.url }}{% else %}{% static 'images/default.jpg' %}{% endif %}"
+                    alt="Avatar" class="avatar mr-2">
+                <span class="username">{{ message.user.username }}</span>
+            </div>
+            <small class="text-muted">{{ message.timestamp }}</small>
+            <div class="message-actions">
+                <a href="{% url 'message_update' message.id %}" class="btn btn-sm btn-outline-primary edit-btn">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+                <a href="{% url 'message_delete' message.id %}" class="btn btn-sm btn-outline-danger delete-btn">
+                    <i class="fas fa-trash"></i> Delete
+                </a>
+                {% if message.user != request.user %}
+                <a href="{% url 'reply_message' message.id %}" class="btn btn-sm btn-outline-secondary reply-btn">
+                    <i class="fas fa-reply"></i> Reply
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="alert alert-info" role="alert">
+        No messages yet. Start a conversation!
+    </div>
+    {% endfor %}
+
+</div>
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
