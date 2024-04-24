@@ -17,7 +17,6 @@ class Animal(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=100)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author')
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
     subscribers = models.ManyToManyField(User, through='Subscriber', related_name='subscribers')

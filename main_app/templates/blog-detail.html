@@ -1,29 +1,40 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container mt-4">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card">
-                <img src="{{ post.image_url }}" class="card-img-top" alt="{{ post.title }}">
+                {% with 'images/'|add:post.title|add:'.webp' as image_filename %}
+                <img src="{% static image_filename %}" alt="{{ post.title }}" class="card-img-top"
+                    style="height: 200px; object-fit: cover;">
+                {% endwith %}
                 <div class="card-body">
                     <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text">By {{ post.author.username }}</p>
                     <p class="card-text">{{ post.content }}</p>
                 </div>
             </div>
             <hr>
             <h3>Comments</h3>
             {% for comment in post.comments.all %}
-            <div class="card">
+            <div class="card mb-3">
                 <div class="card-body">
-                    <p>{{ comment.content }}</p>
-                    <p class="text-muted">Posted by {{ comment.user.username }} on {{ comment.date }}</p>
+                    <p class="card-text">{{ comment.content }}</p>
+                    <p class="card-text text-muted">Posted by {{ comment.user.username }} on {{ comment.date }}</p>
                 </div>
             </div>
             {% empty %}
             <p>No comments yet.</p>
             {% endfor %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="commentContent" class="form-label">Add a comment:</label>
+                    <textarea class="form-control" id="commentContent" name="content" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>
 </div>
