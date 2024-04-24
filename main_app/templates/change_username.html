@@ -1,11 +1,31 @@
 {% extends 'base.html' %}
+
 {% block content %}
 <div class="container mt-4">
-    <h1>Change Username</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Change Username</button>
-    </form>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Change Username</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="old_username" class="form-label">Old Username</label>
+                            <input type="text" class="form-control" id="old_username" name="old_username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="new_username" class="form-label">New Username</label>
+                            <input type="text" class="form-control" id="new_username" name="new_username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirm_username" class="form-label">Confirm New Username</label>
+                            <input type="text" class="form-control" id="confirm_username" name="confirm_username">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Change Username</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
