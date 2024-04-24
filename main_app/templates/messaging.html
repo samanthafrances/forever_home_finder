@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<h1>Connect with others today!</h1>
+<div class="card-header bg-light text-dark"><h1>Connect with others today!</h1></div>
 
-<a href="{% url 'messageform' %}"><button>Add Message</button></a>
-{% for message in messages %}
-{{message.content}}
-<a href="{% url 'message_update' message.id %}">Edit</a>
-<a href="{% url 'message_delete' message.id %}">Delete</a>
+    <a href="{% url 'messageform' %}"><button>Add Message</button></a>
+    <div class="card-body">
+
+        {% for message in messages %}
+        <p>{{message.content}}</p>
+        
+        <form action="{% url 'message_update' message.id %}" method="Post">
+        {% csrf_token %}
+        <input type="submit" value="Edit">
+        </form>
+        <a href="{% url 'message_delete' message.id %}">Delete</a>
+        </form>
+        {% endfor %}  
+        {% for user in users %}
+    </div>
+</div>
+
 {% endfor %}                  
 {% endblock %}
 
