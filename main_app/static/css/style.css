@@ -12,3 +12,11 @@ footer.page-footer {
     padding-top: 0;
     text-align: right;
 }
+
+.home-background {
+    position: relative;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
