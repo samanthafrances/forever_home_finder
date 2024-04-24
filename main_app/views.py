@@ -27,7 +27,7 @@ def donate_view(request):
     return render(request, 'donate.html')
 
 def petitions_view(request):
- return render(request, 'sign-petitions.html')
+ return render(request, 'petitions.html')
 
 def messaging(request):
    messages = Message.objects.all()

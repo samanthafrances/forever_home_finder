@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
 <div class="container"> <h1 class="text-center my-4">About Us</h1> 
@@ -9,6 +9,9 @@
 <div class="col-md-6"> <p> But we're more than just a pet adoption platform. We're a community united by our shared love for animals and our determination to enact positive change. Through our advocacy initiatives, members can get involved in various campaigns and projects aimed at improving animal welfare laws, raising awareness about adoption, and promoting responsible pet ownership. </p> 
 <p class="lead"> Together, we can make a difference. Join us at Forever Home Finder and be a part of the movement to give every animal the chance they deserve - a forever home filled with love and compassion. </p>
 </div> </div> </div> 
-  
+<div class="container mt-4">
+    <div class="position-relative">
+        <img src="{% static 'images/about.png' %}" class="img-fluid" alt="aboutpng"
+            style="width: 100%; height: auto;"> 
 {% endblock %}
           

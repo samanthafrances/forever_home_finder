@@ -3,7 +3,8 @@
 {% block content %}
 <div class="container">
     <h1 class="my-4 text-center">Donation Form</h1>
-    <form>
+    <form target="_blank" action="https://secured.humanesociety.org/page/81880/donate/">
+      {% csrf_token %}
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" required>
@@ -12,27 +13,8 @@
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" required>
       </div>
-      <div class="form-group">
-        <label for="amount">Donation Amount</label>
-        <select class="form-control" id="amount" required>
-          <option value="">Select an amount</option>
-          <option value="25">$25</option>
-          <option value="50">$50</option>
-          <option value="100">$100</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="other-amount">Other Amount</label>
-        <input type="number" class="form-control" id="other-amount" min="1" required>
-        <small class="form-text text-muted">Please enter a custom amount if you selected "Other" above.</small>
-      </div>
-      <div class="form-group">
-        <label for="card-number">Last 4 Digits of Card Number</label>
-        <input type="text" class="form-control" id="card-number" required>
-      </div>
       <br>
-      <button type="submit" class="btn btn-primary">Donate</button>
+      <button type="submit" class="btn btn-primary" >Donate</button>
     </form>
   </div>
 {% endblock %}

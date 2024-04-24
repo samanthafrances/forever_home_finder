@@ -13,6 +13,13 @@ footer.page-footer {
     text-align: right;
 }
 
+.home-background {
+    position: relative;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /* Custom CSS for messaging page */
 
 /* Style for user avatar */
