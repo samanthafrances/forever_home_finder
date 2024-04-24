@@ -37,13 +37,13 @@ class Subscriber(models.Model):
         return self.email
 
 class Comment(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, related_name='comments', on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.content
+         return f'Comment on {self.blog.title}'
     
 class Message(models.Model):
     content = models.TextField()

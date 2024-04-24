@@ -1,5 +1,5 @@
 from django import forms
-from .models import AdoptionInquiry, Profile
+from .models import AdoptionInquiry, Profile, Comment
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -19,3 +19,11 @@ class ProfilePictureForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['avatar']
+        
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        widgets = {
+            'content': forms.Textarea(attrs={'class': 'form-control', 'rows': 3})
+        }
