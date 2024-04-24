@@ -1,6 +1,6 @@
 {% load static %}
 
-{% block content %}
+
 <head>
     <title>Animal Shelters Near You</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTnQrE3O3KZ9cP34MkATpWELwyfe46tqE&libraries=places&callback=initMap" async defer></script>
@@ -12,6 +12,7 @@
     </style>
   </head>
   <body>
+    {% block content %}
     <div id="map"></div>
     <script>
       const initMap = () => {
