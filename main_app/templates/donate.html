@@ -3,7 +3,8 @@
 {% block content %}
 <div class="container">
     <h1 class="my-4 text-center">Donation Form</h1>
-    <form>
+    <form target="_blank" action="https://www.dynepic.com/" method="post">
+      {% csrf_token %}
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" required>
@@ -32,7 +33,7 @@
         <input type="text" class="form-control" id="card-number" required>
       </div>
       <br>
-      <button type="submit" class="btn btn-primary">Donate</button>
+      <button type="submit" class="btn btn-primary" >Donate</button>
     </form>
   </div>
 {% endblock %}
