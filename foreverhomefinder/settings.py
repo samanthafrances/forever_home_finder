@@ -36,7 +36,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 
 
-ALLOWED_HOSTS = [os.environ.get('forever-home-finder', 'localhost')]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
