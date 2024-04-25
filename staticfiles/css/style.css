@@ -1,0 +1,52 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+}
+
+.home-background {
+    position: relative;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Custom CSS for messaging page */
+
+/* Style for user avatar */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Style for username */
+.username {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Style for message card */
+.card {
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+/* Style for self-messages */
+.bg-primary.text-white {
+    background-color: #007bff !important;
+}
+
+/* Style for message timestamp */
+.text-muted {
+    font-size: 0.9rem;
+}

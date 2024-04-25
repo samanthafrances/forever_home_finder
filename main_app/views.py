@@ -8,6 +8,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 def home(request):
@@ -240,12 +242,16 @@ def reply_message(request, message_id):
     return render(request, 'reply_message.html', {'form': form, 'message': message})
 
 # Messaging functionality
-class CreateMessage(CreateView) :
-  template_name = 'message_form.html'
-  success_url = '/messaging'
-  model = Message
-  fields = ['content']
-  
+class CreateMessage(LoginRequiredMixin, CreateView):
+    template_name = 'message_form.html'
+    model = Message
+    fields = ['content']
+
+    def form_valid(self, form):
+        print("Logged-in User ID:", self.request.user.id)
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 class UpdateMessage(UpdateView) :
   model = Message
   fields = ['content']
