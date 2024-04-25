@@ -29,16 +29,19 @@ Forever Home Finder aims to simplify the process of pet adoption by providing us
 - HTML
 - CSS
 - JavaScript
-- APIs
+- Google Maps API
+- Heroku
 
 ## Getting Started
-Visit the following URL to access Forever Home Finder online: [Forever Home Finder](deployed site)
+Visit the following URL to access Forever Home Finder online: [Forever Home Finder](https://forever-home-finder-bf49c85891c7.herokuapp.com/)
 
 ## Screenshots
-![Screenshot 1](link_to_screenshot_1)
-![Screenshot 2](link_to_screenshot_2)
+![Screenshot 1](https://drive.google.com/file/d/1u8tCj4b46xILFdjKVu7jvnNFbUYxpbuG/view?usp=sharing)
+![Screenshot 2](https://drive.google.com/file/d/1QIJEtjqDuHO4q8TDR3v-0Eha5i4XpPA4/view?usp=drive_link)
 
 ## Future Updates
+- Add recaptcha
+- Connect custom domain (forverhomefinder.org)
 - Allow users to leave reviews and ratings for animals they've adopted or fostered. 
 - Add a feature for users to save their favorite animals.
 - Enhance search functionality with advanced filters
@@ -49,5 +52,5 @@ Visit the following URL to access Forever Home Finder online: [Forever Home Find
 - Team Member 3: [Corey Cameron](https://github.com/nottmonk)
 
 ## Links 
-[Github](https://github.com/samanthafrances/forever_home_finder) | [Wireframe](https://www.figma.com/file/VBPGrumxATuXkkbuyIh5pX/Forever-Home-Finder?type=design&node-id=60-1365&mode=design&t=f0WUfbwHOkIaq8sB-0) | [Trello](https://trello.com/b/2uhRkjhN/forever-home-finder)
+[Github](https://github.com/samanthafrances/forever_home_finder) | [Wireframe](https://www.figma.com/file/VBPGrumxATuXkkbuyIh5pX/Forever-Home-Finder?type=design&node-id=60-1365&mode=design&t=f0WUfbwHOkIaq8sB-0) | [Trello](https://trello.com/b/2uhRkjhN/forever-home-finder) | [Heroku](https://forever-home-finder-bf49c85891c7.herokuapp.com/)
 
