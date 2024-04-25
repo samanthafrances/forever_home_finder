@@ -27,6 +27,7 @@ urlpatterns = [
     path('change-username/', views.change_username, name='change_username'),
     path('change-password/', views.change_password, name='change_password'),
     path('messaging/<int:message_id>/reply/', views.reply_message, name='reply_message'),
+    path('animal-shelters-map/', views.animal_shelters_map, name='animal_shelters_map'),
 ]
 
 
