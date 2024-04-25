@@ -31,12 +31,13 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = ''.join(random.choices(string.ascii_letters + string.digits, k=50))
+os.environ['SECRET_KEY'] = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if os.environ['MODE'] == 'dev' else False
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.environ.get('forever-home-finder', 'localhost')]
 
 
 # Application definition
@@ -87,7 +88,7 @@ WSGI_APPLICATION = 'foreverhomefinder.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600),
+        'default': dj_database_url.config(),
     }
 
 
