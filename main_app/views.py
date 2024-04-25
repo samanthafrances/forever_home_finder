@@ -26,9 +26,6 @@ def blog_view(request):
 def donate_view(request):
     return render(request, 'donate.html')
 
-def petitions_view(request):
- return render(request, 'petitions.html')
-
 def messaging(request):
    messages = Message.objects.all()
    context = {'messages': messages}
@@ -86,6 +83,9 @@ def adoption_details(request, animal_id):
     animal = get_object_or_404(Animal, pk=animal_id)
     return render(request, 'adoptiondetails.html', {'animal': animal})
 
+def animal_shelters_map(request):
+    return render(request, 'animal_shelters_map.html')
+
 def blog_details(request, blog_id):
     blog = get_object_or_404(Blog, pk=blog_id)
     comments = blog.comments.all()
@@ -101,7 +101,7 @@ def blog_details(request, blog_id):
         form = CommentForm()
     return render(request, 'blog-detail.html', {'post': blog, 'comments': comments, 'form': form})
 
-def petitions(request):
+def petitions_view(request):
     petitions = [
         {
             'url': 'https://www.change.org/p/demand-felony-charges-against-cody-roberts-for-animal-cruelty?',
