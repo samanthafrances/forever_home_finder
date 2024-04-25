@@ -35,7 +35,7 @@ SECRET_KEY = ''.join(random.choices(string.ascii_letters + string.digits, k=50))
 os.environ['SECRET_KEY'] = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+
 
 ALLOWED_HOSTS = [os.environ.get('forever-home-finder', 'localhost')]
 
@@ -88,9 +88,10 @@ WSGI_APPLICATION = 'foreverhomefinder.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-        'default': dj_database_url.config(),
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=True),
     }
 
+print(dj_database_url.config(conn_max_age=600, ssl_require=True))
 
 
 
